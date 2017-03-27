@@ -1,11 +1,6 @@
 package com.capgemini.chess.statistics.dataaccess.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.capgemini.chess.update.dataaccess.entities.UserEntity;
 
@@ -13,46 +8,59 @@ import com.capgemini.chess.update.dataaccess.entities.UserEntity;
 @Table(name = "MATCHES")
 public class MatchEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long id;
-	@ManyToOne
-	UserEntity winner;
-	@ManyToOne
-	UserEntity loser;
-	
-	boolean isDraw;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
 
-	public Long getId() {
-		return id;
-	}
+    @ManyToOne
+    UserEntity whitePlayer;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @ManyToOne
+    UserEntity blackPlayer;
 
-	public UserEntity getWinner() {
-		return winner;
-	}
+    @Column(nullable = false)
+    boolean whitePlayerWon;
 
-	public void setWinner(UserEntity winner) {
-		this.winner = winner;
-	}
+    @Column(nullable = false)
+    boolean blackPlayerWon;
 
-	public UserEntity getLoser() {
-		return loser;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setLoser(UserEntity loser) {
-		this.loser = loser;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public boolean isDraw() {
-		return isDraw;
-	}
+    public UserEntity getWhitePlayer() {
+        return whitePlayer;
+    }
 
-	public void setDraw(boolean isDraw) {
-		this.isDraw = isDraw;
-	}
+    public void setWhitePlayer(UserEntity whitePlayer) {
+        this.whitePlayer = whitePlayer;
+    }
 
+    public UserEntity getBlackPlayer() {
+        return blackPlayer;
+    }
+
+    public void setBlackPlayer(UserEntity blackPlayer) {
+        this.blackPlayer = blackPlayer;
+    }
+
+    public boolean isWhitePlayerWon() {
+        return whitePlayerWon;
+    }
+
+    public void setWhitePlayerWon(boolean whitePlayerWon) {
+        this.whitePlayerWon = whitePlayerWon;
+    }
+
+    public boolean isBlackPlayerWon() {
+        return blackPlayerWon;
+    }
+
+    public void setBlackPlayerWon(boolean blackPlayerWon) {
+        this.blackPlayerWon = blackPlayerWon;
+    }
 }

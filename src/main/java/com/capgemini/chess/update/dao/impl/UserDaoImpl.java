@@ -14,5 +14,23 @@ import com.capgemini.chess.update.to.UserTo;
 public class UserDaoImpl extends AbstractDao<UserEntity, Long> implements UserDao {
 
 
+    @Override
+    public UserTo update(UserTo userTo) {
+        return null;
+    }
 
+    @Override
+    public UserTo findByID(Long id) {
+        return null;
+    }
+
+    @Override
+    public UserTo updateRanking(UserEntity user) {
+        return null;
+    }
+
+    @Override
+    public UserTo updatePoints(UserTo userTo, int points) {
+        return null;
+    }
 }

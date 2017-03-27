@@ -8,6 +8,12 @@ import com.capgemini.chess.statistics.to.ResultTo;
 
 public interface PointsCalculatorService {
 
-	ResultTo calculatePoints(MatchTo matchTo) throws ResultException;
+	/**
+	 * Calculates points for victory, defeat and draw.
+	 * @param matchTo
+	 * @return
+	 * @throws ResultException
+	 */
+	ResultTo calculatePoints(PlayerColor playerColor, MatchTo matchTo) throws ResultException;
 
 }

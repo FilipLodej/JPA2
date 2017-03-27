@@ -2,10 +2,16 @@ package com.capgemini.chess.statistics.service;
 
 import com.capgemini.chess.statistics.exception.ResultException;
 import com.capgemini.chess.statistics.to.MatchTo;
-import com.capgemini.chess.update.to.UserTo;
 
 public interface StatisticsServiceFacade {
 
-	 UserTo updatePlayerStatistic(MatchTo matchTo) throws ResultException;
-	 
+	/**
+	 * Adds a finished match, updates user1 and user2 statistics
+	 * (number of games, experience level, games lost, won, points),
+	 * calculates points
+	 * @param matchTo
+	 * @return
+	 * @throws ResultException
+	 */
+	 void updatePlayerStatistic(MatchTo matchTo) throws ResultException;
 }

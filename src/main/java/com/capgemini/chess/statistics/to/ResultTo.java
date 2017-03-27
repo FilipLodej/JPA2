@@ -1,24 +1,41 @@
 package com.capgemini.chess.statistics.to;
 
+import com.capgemini.chess.statistics.service.impl.MatchResult;
+import com.capgemini.chess.update.to.UserTo;
+
+/**
+ * Keeps match result for a single player and score
+ */
 public class ResultTo {
 
-	int firstResult;
-	int secondResult;
+	private UserTo userTo;
+	private int score;
+	private MatchResult result;
 
-	public int getFirstResult() {
-		return firstResult;
+	public ResultTo() {
 	}
 
-	public void setFirstResult(int firstResult) {
-		this.firstResult = firstResult;
+	public UserTo getUserTo() {
+		return userTo;
 	}
 
-	public int getSecondResult() {
-		return secondResult;
+	public void setUserTo(UserTo userTo) {
+		this.userTo = userTo;
 	}
 
-	public void setSecondResult(int secondResult) {
-		this.secondResult = secondResult;
+	public int getScore() {
+		return score;
 	}
 
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public MatchResult getResult() {
+		return result;
+	}
+
+	public void setResult(MatchResult result) {
+		this.result = result;
+	}
 }

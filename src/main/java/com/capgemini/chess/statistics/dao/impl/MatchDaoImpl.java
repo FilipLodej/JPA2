@@ -11,9 +11,8 @@ public class MatchDaoImpl extends AbstractDao<MatchEntity, Long> implements Matc
 
 	@Override
 	public MatchTo findOneTo(Long id) {
-		MatchEntity match=findOne(id);
+		MatchEntity match = findOne(id);
 		return MatchMapper.map(match);
 	}
-
 
 }

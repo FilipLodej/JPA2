@@ -12,25 +12,43 @@ public class MatchMapper {
 		if (matchEntity != null) {
 			MatchTo matchTo = new MatchTo();
 			matchTo.setId(matchEntity.getId());
-			UserTo winner = UserMapper.map(matchEntity.getWinner());
-			UserTo loser = UserMapper.map(matchEntity.getLoser());
-			matchTo.setWinner(winner);
-			matchTo.setLoser(loser);
-			matchTo.setDrawn(matchEntity.isDraw());
+			UserTo whitePlayer = UserMapper.map(matchEntity.getWhitePlayer());
+			UserTo blackPlayer = UserMapper.map(matchEntity.getBlackPlayer());
+			matchTo.setBlackPlayer(blackPlayer);
+			matchTo.setWhitePlayer(whitePlayer);
+			matchTo.setBlackPlayerWon(matchEntity.isBlackPlayerWon());
+			matchTo.setWhitePlayerWon(matchEntity.isWhitePlayerWon());
 			return matchTo;
 		}
 		return null;
 	}
-	
+
+	//TODOas above DONE
 	public static MatchEntity map(MatchTo matchTo) {
 		if (matchTo != null) {
 			MatchEntity matchEntity = new MatchEntity();
 			matchEntity.setId(matchTo.getId());
-			UserEntity winner = UserMapper.map(matchTo.getWinner());
-			UserEntity loser = UserMapper.map(matchTo.getLoser());
-			matchEntity.setWinner(winner);
-			matchEntity.setLoser(loser);
-			matchEntity.setDraw(matchTo.isDraw());
+			UserEntity whitePlayer = UserMapper.map(matchTo.getWhitePlayer());
+			UserEntity blackPlayer = UserMapper.map(matchTo.getBlackPlayer());
+			matchEntity.setWhitePlayer(whitePlayer);
+			matchEntity.setBlackPlayer(blackPlayer);
+			matchEntity.setBlackPlayerWon(matchTo.isBlackPlayerWon());
+			matchEntity.setWhitePlayerWon(matchTo.isWhitePlayerWon());
+			return matchEntity;
+		}
+		return null;
+	}
+
+	//TODO same as in statistics Mapper DONE
+	public static MatchEntity map(MatchEntity matchEntity, MatchTo matchTo) {
+		if (matchTo != null && matchEntity!=null) {
+			matchEntity.setId(matchTo.getId());
+			UserEntity whitePlayer = UserMapper.map(matchTo.getWhitePlayer());
+			UserEntity blackPlayer = UserMapper.map(matchTo.getBlackPlayer());
+			matchEntity.setWhitePlayer(whitePlayer);
+			matchEntity.setBlackPlayer(blackPlayer);
+			matchEntity.setBlackPlayerWon(matchTo.isBlackPlayerWon());
+			matchEntity.setWhitePlayerWon(matchTo.isWhitePlayerWon());
 			return matchEntity;
 		}
 		return null;

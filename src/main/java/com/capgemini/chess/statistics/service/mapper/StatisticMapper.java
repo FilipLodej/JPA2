@@ -33,6 +33,19 @@ public class StatisticMapper {
 			return entity;
 		}
 		return null;
+	}
 
+	public static StatisticEntity map(StatisticEntity entity, StatisticTo to) {
+		if (entity != null && to != null) {
+			entity.setId(to.getId());
+			entity.setLevel(to.getLevel());
+			entity.setPoints(to.getPoints());
+			entity.setPlayed(to.getPlayed());
+			entity.setWon(to.getWon());
+			entity.setDrawn(to.getDrawn());
+			entity.setLost(to.getLost());
+			return entity;
+		}
+		return null;
 	}
 }

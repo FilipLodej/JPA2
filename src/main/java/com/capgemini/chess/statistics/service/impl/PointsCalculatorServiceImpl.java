@@ -1,58 +1,48 @@
 package com.capgemini.chess.statistics.service.impl;
 
-import org.springframework.stereotype.Service;
-
 import com.capgemini.chess.statistics.exception.ResultException;
 import com.capgemini.chess.statistics.service.PointsCalculatorService;
 import com.capgemini.chess.statistics.to.MatchTo;
+import com.capgemini.chess.statistics.service.PlayerColor;
 import com.capgemini.chess.statistics.to.ResultTo;
+import com.capgemini.chess.update.to.UserTo;
+import org.springframework.stereotype.Service;
 
 @Service
 public class PointsCalculatorServiceImpl implements PointsCalculatorService {
 
-	@Override
-	public ResultTo calculatePoints(MatchTo matchTo) throws ResultException {
-		if (matchTo != null) {
-			ResultTo result = new ResultTo();
-			if (matchTo.isDraw()) {
-				result.setFirstResult(calculateDrawnPoints());
-				result.setSecondResult(calculateDrawnPoints());
-				return result;
-			} else {
-				result.setFirstResult(calculateProfitPoints());
-				result.setSecondResult(calculateLostPoints());
-				return result;
-			}
-		} else {
-			throw new ResultException("Result is incorrect");
-		}
-		// int points = 0;
-		// if (result == 1) {
-		// points = calculateProfitPoints();
-		// return points;
-		// } else if (result == -1) {
-		// points = calculateLostPoints();
-		// return points;
-		// } else if (result == 0) {
-		// return points;
-		// } else {
-		// throw new ResultException("Result is incorrect");
-		// }
-	}
+    private static final int LOSS_POINTS = -10;
+    private static final int VICTORY_POINTS = 10;
+    private static final int DRAW_POINTS = 5;
 
-	public int calculateProfitPoints() {
-		int profitPoints = 10;
-		return profitPoints;
-	}
+    @Override
+    public ResultTo calculatePoints(PlayerColor playerColor, MatchTo matchTo) throws ResultException {
+        UserTo player = matchTo.getPlayer(playerColor);
+        if (matchTo != null && player != null) {
+            ResultTo result = new ResultTo();
+            result.setUserTo(player);
+            MatchResult matchResult = matchTo.getResult(playerColor);
+            result.setScore(PointsCalculatorServiceImpl.getPoint(matchResult));
+            result.setResult(matchResult);
+            return result;
+        } else {
+            throw new ResultException("Result is incorrect");
+        }
+    }
 
-	public int calculateLostPoints() {
-		int lostPoints = -10;
-		return lostPoints;
-	}
-
-	public int calculateDrawnPoints() {
-		int drawnPoints = 5;
-		return drawnPoints;
-	}
-
+    private static int getPoint(MatchResult matchResult) {
+        int result = 0;
+        switch (matchResult) {
+            case DRAW:
+                result = DRAW_POINTS;
+                break;
+            case WON:
+                result = VICTORY_POINTS;
+                break;
+            case LOST:
+                result = LOSS_POINTS;
+                break;
+        }
+        return result;
+    }
 }

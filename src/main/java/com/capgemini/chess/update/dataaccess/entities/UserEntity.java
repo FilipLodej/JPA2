@@ -2,13 +2,7 @@ package com.capgemini.chess.update.dataaccess.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.capgemini.chess.statistics.dataaccess.entities.StatisticEntity;
 
@@ -21,14 +15,15 @@ public class UserEntity extends AbstractEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(nullable = false, length = 10)
-	private String login;	
+	private String login;
 	@Column(nullable = false, length = 10)
 	private String email;
 	@Column(nullable = false, length = 10)
 	private String password;
-	@OneToOne
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private ProfileEntity profile;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private StatisticEntity statistic;
 
 	public UserEntity(){
