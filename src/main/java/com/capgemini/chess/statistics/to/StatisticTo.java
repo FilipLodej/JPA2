@@ -3,7 +3,6 @@ package com.capgemini.chess.statistics.to;
 public class StatisticTo {
 
 	private Long id;
-	private int position;
 	private int level;
 	private int points;
 	private int played;
@@ -17,14 +16,6 @@ public class StatisticTo {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public int getPosition() {
-		return position;
-	}
-
-	public void setPosition(int position) {
-		this.position = position;
 	}
 
 	public int getLevel() {

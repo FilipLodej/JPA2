@@ -7,9 +7,9 @@ public class StatisticMapper {
 	public static StatisticTo map(StatisticEntity entity) {
 		if (entity != null) {
 			StatisticTo to = new StatisticTo();
+			to.setId(entity.getId());
 			to.setLevel(entity.getLevel());
 			to.setPoints(entity.getPoints());
-			to.setPosition(entity.getPosition());
 			to.setPlayed(entity.getPlayed());
 			to.setWon(entity.getWon());
 			to.setDrawn(entity.getDrawn());
@@ -23,9 +23,9 @@ public class StatisticMapper {
 	public static StatisticEntity map(StatisticTo to) {
 		if (to != null) {
 			StatisticEntity entity = new StatisticEntity();
+			entity.setId(to.getId());
 			entity.setLevel(to.getLevel());
 			entity.setPoints(to.getPoints());
-			entity.setPosition(to.getPosition());
 			entity.setPlayed(to.getPlayed());
 			entity.setWon(to.getWon());
 			entity.setDrawn(to.getDrawn());

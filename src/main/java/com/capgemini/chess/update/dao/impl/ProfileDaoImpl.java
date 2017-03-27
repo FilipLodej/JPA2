@@ -3,6 +3,8 @@ package com.capgemini.chess.update.dao.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capgemini.chess.statistics.dao.impl.AbstractDao;
+import com.capgemini.chess.statistics.dataaccess.entities.MatchEntity;
 import com.capgemini.chess.update.dao.ProfileDao;
 import com.capgemini.chess.update.dataaccess.entities.ProfileEntity;
 import com.capgemini.chess.update.dataaccess.soruce.MapDataSource;
@@ -10,7 +12,7 @@ import com.capgemini.chess.update.service.mapper.ProfileMapper;
 import com.capgemini.chess.update.to.ProfileTo;
 
 @Service
-public class ProfileDaoImpl implements ProfileDao {
+public class ProfileDaoImpl extends AbstractDao<ProfileEntity, Long> implements ProfileDao {
 
 	@Autowired
 	private MapDataSource dataSource;

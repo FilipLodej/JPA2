@@ -1,6 +1,7 @@
 package com.capgemini.chess.update.to;
 
-import com.capgemini.chess.statistics.dataaccess.entities.StatisticEntity;
+
+import com.capgemini.chess.statistics.to.StatisticTo;
 
 public class UserTo {
 
@@ -9,7 +10,7 @@ public class UserTo {
 	private String email;
 	private String password;
 	private ProfileTo profile;
-	private StatisticEntity statistic;
+	private StatisticTo statistic;
 
 	public Long getId() {
 		return id;
@@ -43,11 +44,12 @@ public class UserTo {
 		this.profile = profile;
 	}
 
-	public StatisticEntity getStatistic() {
+
+	public StatisticTo getStatistic() {
 		return statistic;
 	}
 
-	public void setStatistic(StatisticEntity statistic) {
+	public void setStatistic(StatisticTo statistic) {
 		this.statistic = statistic;
 	}
 

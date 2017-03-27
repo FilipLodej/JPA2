@@ -3,7 +3,12 @@ package com.capgemini.chess.update.service.mapper;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.capgemini.chess.statistics.dataaccess.entities.StatisticEntity;
+import com.capgemini.chess.statistics.service.mapper.StatisticMapper;
+import com.capgemini.chess.statistics.to.StatisticTo;
+import com.capgemini.chess.update.dataaccess.entities.ProfileEntity;
 import com.capgemini.chess.update.dataaccess.entities.UserEntity;
+import com.capgemini.chess.update.to.ProfileTo;
 import com.capgemini.chess.update.to.UserTo;
 
 public class UserMapper {
@@ -15,8 +20,10 @@ public class UserMapper {
 			to.setLogin(entity.getLogin());
 			to.setEmail(entity.getEmail());
 			to.setPassword(entity.getPassword());
-			to.setProfile(ProfileMapper.map(entity.getProfile()));
-//			to.setStatistic(StatisticMapper.map(entity.getStatistic()));
+			ProfileTo profile=ProfileMapper.map(entity.getProfile());
+			to.setProfile(profile);
+			StatisticTo statistic=StatisticMapper.map(entity.getStatistic());
+			to.setStatistic(statistic);
 			return to;
 		}
 		return null;
@@ -28,12 +35,16 @@ public class UserMapper {
 			entity.setId(to.getId());
 			entity.setEmail(to.getEmail());
 			entity.setPassword(to.getPassword());
-			entity.setProfile(ProfileMapper.map(to.getProfile()));
-//			entity.setStatistic(StatisticMapper.map(to.getStatistic()));
+			ProfileEntity profile=ProfileMapper.map(to.getProfile());
+			entity.setProfile(profile);
+			StatisticEntity statistic=StatisticMapper.map(to.getStatistic());
+			entity.setStatistic(statistic);
 			return entity;
 		}
 		return null;
 	}
+	
+
 
 	public static List<UserTo> map2TOs(List<UserEntity> entities) {
 		return entities.stream().map(UserMapper::map).collect(Collectors.toList());

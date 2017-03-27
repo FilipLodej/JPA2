@@ -2,16 +2,23 @@ package com.capgemini.chess.statistics.to;
 
 public class ResultTo {
 
-	int result;
+	int firstResult;
+	int secondResult;
 
-	public int getResult() {
-		return result;
+	public int getFirstResult() {
+		return firstResult;
 	}
 
-	public void setResult(int result) {
-		this.result = result;
+	public void setFirstResult(int firstResult) {
+		this.firstResult = firstResult;
 	}
 
+	public int getSecondResult() {
+		return secondResult;
+	}
 
+	public void setSecondResult(int secondResult) {
+		this.secondResult = secondResult;
+	}
 
 }

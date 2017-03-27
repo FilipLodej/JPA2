@@ -27,8 +27,8 @@ public class UpdateRankingServiceImpl implements UpdateRankingService {
 		UserComparator comparator = new UserComparator();
 		Collections.sort(users, comparator);
 		UserEntity user = getUser(users, userTo);
-		int position = users.indexOf(user);
-		user.getStatistic().setPosition(position);
+//		int position = users.indexOf(user);
+//		user.getStatistic().setPosition(position);
 		return userDao.updateRanking(user);
 	}
 

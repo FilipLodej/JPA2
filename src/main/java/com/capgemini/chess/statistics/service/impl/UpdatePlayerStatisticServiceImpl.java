@@ -6,15 +6,16 @@ import org.springframework.stereotype.Service;
 import com.capgemini.chess.statistics.exception.ResultException;
 import com.capgemini.chess.statistics.service.PointsCalculatorService;
 import com.capgemini.chess.statistics.service.UpdateLevelService;
-import com.capgemini.chess.statistics.service.UpdatePlayerRankingService;
+import com.capgemini.chess.statistics.service.UpdatePlayerStatisticService;
 import com.capgemini.chess.statistics.service.UpdatePointsService;
 import com.capgemini.chess.statistics.service.UpdateRankingService;
+import com.capgemini.chess.statistics.to.MatchTo;
 import com.capgemini.chess.statistics.to.ResultTo;
 import com.capgemini.chess.update.dao.UserDao;
 import com.capgemini.chess.update.to.UserTo;
 
 @Service
-public class UpdatePlayerRankingServiceImpl implements UpdatePlayerRankingService {
+public class UpdatePlayerStatisticServiceImpl implements UpdatePlayerStatisticService {
 
 	@Autowired
 	PointsCalculatorService pointsCalculator;
@@ -32,11 +33,11 @@ public class UpdatePlayerRankingServiceImpl implements UpdatePlayerRankingServic
 	UpdateRankingService updateRankingService;
 
 	@Override
-	public UserTo updatePlayerRanking(UserTo userTo, ResultTo resultTo) throws ResultException {
-		int points=pointsCalculator.calculatePoints(resultTo);
-		UserTo user=updatePointsService.addPointsToUser(userTo, points);
-		user = updateLevelService.updatePlayerLevel(user);
-		user = updateRankingService.updateRanking(user);
+	public UserTo updatePlayerStatistic(MatchTo matchTo) throws ResultException {
+		ResultTo resultTo =pointsCalculator.calculatePoints(matchTo);
+		MatchTo match=updatePointsService.addPointsToUsers(matchTo,resultTo);
+//		user = updateLevelService.updatePlayerLevel(user);
+//		user = updateRankingService.updateRanking(user);
 		return userDao.update(user);
 	}
 	
