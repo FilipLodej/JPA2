@@ -7,6 +7,4 @@ public interface UserDao {
 	
 	 UserTo update(UserTo userTo);
 	 UserTo findByID(Long id);
-	 UserTo updateRanking(UserEntity user);
-	 UserTo updatePoints(UserTo userTo, int points);
 }

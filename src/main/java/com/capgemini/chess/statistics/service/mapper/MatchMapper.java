@@ -26,7 +26,6 @@ public class MatchMapper {
 		return null;
 	}
 
-	// TODOas above DONE
 	public static MatchEntity map(MatchTo matchTo) {
 		if (matchTo != null) {
 			MatchEntity matchEntity = new MatchEntity();
@@ -42,7 +41,6 @@ public class MatchMapper {
 		return null;
 	}
 
-	// TODO same as in statistics Mapper DONE
 	public static MatchEntity map(MatchEntity matchEntity, MatchTo matchTo) {
 		if (matchTo != null && matchEntity != null) {
 			matchEntity.setId(matchTo.getId());

@@ -20,15 +20,4 @@ public class UserDaoImpl extends AbstractDao<UserEntity, Long> implements UserDa
 		return UserMapper.map(findOne(id));
 	}
 
-	@Override
-	public UserTo updateRanking(UserEntity user) {
-		//TODO 
-		return null;
-	}
-
-	@Override
-	public UserTo updatePoints(UserTo userTo, int points) {
-		//TODO
-		return null;
-	}
 }
