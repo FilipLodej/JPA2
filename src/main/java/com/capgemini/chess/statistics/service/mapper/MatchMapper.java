@@ -1,5 +1,8 @@
 package com.capgemini.chess.statistics.service.mapper;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.capgemini.chess.statistics.dataaccess.entities.MatchEntity;
 import com.capgemini.chess.statistics.to.MatchTo;
 import com.capgemini.chess.update.dataaccess.entities.UserEntity;
@@ -23,7 +26,7 @@ public class MatchMapper {
 		return null;
 	}
 
-	//TODOas above DONE
+	// TODOas above DONE
 	public static MatchEntity map(MatchTo matchTo) {
 		if (matchTo != null) {
 			MatchEntity matchEntity = new MatchEntity();
@@ -39,9 +42,9 @@ public class MatchMapper {
 		return null;
 	}
 
-	//TODO same as in statistics Mapper DONE
+	// TODO same as in statistics Mapper DONE
 	public static MatchEntity map(MatchEntity matchEntity, MatchTo matchTo) {
-		if (matchTo != null && matchEntity!=null) {
+		if (matchTo != null && matchEntity != null) {
 			matchEntity.setId(matchTo.getId());
 			UserEntity whitePlayer = UserMapper.map(matchTo.getWhitePlayer());
 			UserEntity blackPlayer = UserMapper.map(matchTo.getBlackPlayer());
@@ -52,5 +55,13 @@ public class MatchMapper {
 			return matchEntity;
 		}
 		return null;
+	}
+
+	public static List<MatchTo> map2Tos(List<MatchEntity> entities) {
+		return entities.stream().map(MatchMapper::map).collect(Collectors.toList());
+	}
+
+	public static List<MatchEntity> map2Entities(List<MatchTo> tos) {
+		return tos.stream().map(MatchMapper::map).collect(Collectors.toList());
 	}
 }

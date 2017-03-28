@@ -13,7 +13,7 @@ public class StatisticDaoImpl extends AbstractDao<StatisticEntity, Long> impleme
 
 	@Override
 	public StatisticTo findByUser(UserTo userTo) {
-		StatisticEntity statisticEntity=findOne(userTo.getId());
+		StatisticEntity statisticEntity = findOne(userTo.getId());
 		return StatisticMapper.map(statisticEntity);
 	}
 
@@ -28,5 +28,20 @@ public class StatisticDaoImpl extends AbstractDao<StatisticEntity, Long> impleme
 		return StatisticMapper.map(save(StatisticMapper.map(statisticTo)));
 	}
 
-	
+	@Override
+	public StatisticTo showCurrentUserStatistic(UserTo userTo) {
+		StatisticEntity statistic = entityManager
+				.createQuery("select s from StatisticEntity s where s.id=:id", StatisticEntity.class)
+				.setParameter("id", userTo.getStatistic().getId()).getSingleResult();
+		return StatisticMapper.map(statistic);
+	}
+
+	@Override
+	public Long countCurrentUserRanking(UserTo userTo) {
+		Long numberOfBetterUsers = entityManager
+				.createQuery("select count(s.id)from StatisticEntity s where s.points>:points", Long.class)
+				.setParameter("points", userTo.getStatistic().getPoints()).getSingleResult();
+		return numberOfBetterUsers;
+	}
+
 }

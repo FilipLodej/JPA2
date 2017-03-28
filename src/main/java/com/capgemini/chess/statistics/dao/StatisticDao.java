@@ -8,4 +8,6 @@ public interface StatisticDao {
 	StatisticTo findByUser(UserTo userTo);
 	StatisticTo updateByUser(UserTo userTo);
 	StatisticTo save(StatisticTo statisticTo);
+	StatisticTo showCurrentUserStatistic(UserTo userTo);
+	Long countCurrentUserRanking(UserTo userTo);
 }

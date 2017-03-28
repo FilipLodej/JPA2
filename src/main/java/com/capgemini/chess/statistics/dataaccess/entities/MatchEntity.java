@@ -13,7 +13,7 @@ public class MatchEntity {
     Long id;
 
     @ManyToOne
-    UserEntity whitePlayer;
+	UserEntity whitePlayer;
 
     @ManyToOne
     UserEntity blackPlayer;
