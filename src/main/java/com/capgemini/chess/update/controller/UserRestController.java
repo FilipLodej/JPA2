@@ -12,7 +12,6 @@ import com.capgemini.chess.update.dataaccess.entities.UserEntity;
 import com.capgemini.chess.update.dataaccess.soruce.MapDataSource;
 import com.capgemini.chess.update.exception.UserValidationException;
 import com.capgemini.chess.update.service.UserServiceFacade;
-import com.capgemini.chess.update.to.UserTo;
 
 @RestController
 @ResponseBody

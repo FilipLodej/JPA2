@@ -1,6 +1,5 @@
 package com.capgemini.chess.update.dao;
 
-import com.capgemini.chess.update.dataaccess.entities.UserEntity;
 import com.capgemini.chess.update.to.UserTo;
 
 public interface UserDao {

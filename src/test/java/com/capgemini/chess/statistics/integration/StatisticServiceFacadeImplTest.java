@@ -200,8 +200,7 @@ public class StatisticServiceFacadeImplTest {
 		int after2Drawn=afterUpdate2.getStatistic().getDrawn();
 		int after1Played=afterUpdate1.getStatistic().getPlayed();
 		int after2Played=afterUpdate2.getStatistic().getPlayed();
-		StatisticTo stat1After=afterUpdate1.getStatistic();
-		StatisticTo stat2After=afterUpdate2.getStatistic();
+
 		//then
 		assertEquals(user1Points+5,after1Points);
 		assertEquals(user2Points+5,after2Points);
