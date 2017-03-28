@@ -7,5 +7,4 @@ import com.capgemini.chess.update.to.UserTo;
 
 public interface UserServiceFacade {
 	UserTo updateUser(UserTo userTo) throws UserValidationException;
-
 }

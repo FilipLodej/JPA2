@@ -33,6 +33,7 @@ public class UserMapper {
 		if (to != null) {
 			UserEntity entity = new UserEntity();
 			entity.setId(to.getId());
+			entity.setLogin(to.getLogin());
 			entity.setEmail(to.getEmail());
 			entity.setPassword(to.getPassword());
 			ProfileEntity profile=ProfileMapper.map(to.getProfile());

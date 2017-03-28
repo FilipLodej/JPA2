@@ -23,7 +23,6 @@ public class UserUpdateServiceImplTest {
 	@InjectMocks
 	UserUpdateServiceImpl userUpdateService;
 
-
 	@Test
 	public void shouldValidateAndThenUpdateProfileAndUser() throws Exception {
 		// given
@@ -35,4 +34,5 @@ public class UserUpdateServiceImplTest {
 		inOrder.verify(userValidService).validate(userToUpdate);
 		inOrder.verify(userDao).update(userToUpdate);
 	}
+
 }

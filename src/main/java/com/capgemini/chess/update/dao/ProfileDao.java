@@ -5,6 +5,5 @@ import com.capgemini.chess.update.to.ProfileTo;
 public interface ProfileDao {
 
 	ProfileTo findById(Long id);
-
 	ProfileTo update(ProfileTo profileTo);
 }

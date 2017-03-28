@@ -36,5 +36,4 @@ public class ProfileUpdateServiceImplTest {
 		inOrder.verify(profileValidService).validate(profileToUpdate);
 		inOrder.verify(profileDao).update(profileToUpdate);
 	}
-
 }
