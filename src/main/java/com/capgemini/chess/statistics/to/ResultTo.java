@@ -3,9 +3,6 @@ package com.capgemini.chess.statistics.to;
 import com.capgemini.chess.statistics.service.impl.MatchResult;
 import com.capgemini.chess.update.to.UserTo;
 
-/**
- * Keeps match result for a single player and score
- */
 public class ResultTo {
 
 	private UserTo userTo;

@@ -4,9 +4,6 @@ import com.capgemini.chess.statistics.service.PlayerColor;
 import com.capgemini.chess.statistics.service.impl.MatchResult;
 import com.capgemini.chess.update.to.UserTo;
 
-/**
- * Keeps match results
- */
 public class MatchTo {
 
 	Long id;

@@ -19,8 +19,8 @@ public class StatisticDaoImpl extends AbstractDao<StatisticEntity, Long> impleme
 
 	@Override
 	public StatisticTo updateByUser(UserTo userTo) {
-		// TODO Auto-generated method stub
-		return null;
+		StatisticTo statisticTo = userTo.getStatistic();
+		return StatisticMapper.map(update(StatisticMapper.map(statisticTo)));
 	}
 
 	@Override

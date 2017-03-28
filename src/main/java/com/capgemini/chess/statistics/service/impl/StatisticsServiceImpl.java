@@ -27,17 +27,17 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 	@Autowired
 	UserStatisticsService userStatisticsService;
-	
+
 	@Autowired
 	CurrentRankingService currentRankingService;
 
 	@Override
 	public void updatePlayerStatistic(MatchTo matchTo) throws ResultException {
+
 		// add a match
-		// TODO see Interface
 		matchService.addMatch(matchTo);
 
-		// calculate points
+		// calculate points for single user
 		ResultTo whitePlayerResults = pointsCalculator.calculatePoints(PlayerColor.WHITE, matchTo);
 		ResultTo blackPlayerResults = pointsCalculator.calculatePoints(PlayerColor.BLACK, matchTo);
 
@@ -64,9 +64,5 @@ public class StatisticsServiceImpl implements StatisticsService {
 	public Long showCurrentRankingPosition(UserTo userTo) throws Exception {
 		return currentRankingService.showCurrentRankingPosition(userTo);
 	}
-
-
-
-
 
 }
